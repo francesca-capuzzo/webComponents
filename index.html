@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="main-title">Web Components</h1>
+
+    <p class="par">pluto</p>
+
+    <h2>Selected users</h2>
+    <div id="selected-user">
+
+    </div>
+    <h2>All users</h2>
+
+    <!-- <pippo-tag></pippo-tag> -->
+    <!--verrà visualizzato direttamente un p con scritto 'pippo' perchè nel pippo-tag.js ho definito la funziona initTag() per TUTTI i pippo-tag che creo!!!!!!-->
+
+    <!-- <pippo-tag class="pippo">ciao</pippo-tag> -->
+
+    <pippo-tag pippo-user='{"name": "andrea", "mail": "pippo@grr.la"}'></pippo-tag> 
+
+    <pippo-tag pippo-user='{"name": "simone", "mail": "pluto@grr.la"}'></pippo-tag> 
+   
+
+</body>
+<script src="./pippo-tag.js"></script>
+<script src="./main.js"></script>
+</html>
+
+
+
+
+
