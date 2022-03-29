@@ -1,0 +1,27 @@
+{
+  "name": "webcomponents",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francesca-capuzzo/webComponents.git"
+  },
+  "author": "francesca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francesca-capuzzo/webComponents/issues"
+  },
+  "homepage": "https://github.com/francesca-capuzzo/webComponents#readme",
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "snowpack": "^3.8.8"
+  }
+}

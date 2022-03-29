@@ -1,60 +1,52 @@
-class SuperHeader extends HTMLHeadingElement{ //in questo caso estendo la famiglia degli H (h1, h2, h3...) e non un qualunque elemento HTML
+/* eslint-disable max-len */
+class SuperHeader extends HTMLHeadingElement { // in questo caso estendo la famiglia degli H (h1, h2, h3...) e non un qualunque elemento HTML
+    constructor() {
+        super();
 
-
-    constructor(){
-        super()
-        
         this.style.background = 'green';
     }
 
-
-    attributeChangedCallback(){
+    attributeChangedCallback() {
         this.getAttributes();
         this.initTag();
     }
 
-    static get observedAttributes(){ return ['user-count']; }
+    static get observedAttributes() { return ['user-count']; }
 
-    getAttributes(){
+    getAttributes() {
         if (this.getAttribute('user-count')) {
-            this.userCount = parseInt(this.getAttribute('user-count'))
+            this.userCount = parseInt(this.getAttribute('user-count'), 10);
         }
     }
 
-
-
-    initTag(){
-        
+    initTag() {
         let container;
 
         if (document.getElementById('additional-content')) {
-            container = document.getElementById('additional-content')
-            container.innerHTML = ""; //se c'è già lo ripulisco 
-        }
-        else {
-            container = document.createElement('div'); 
-            container.id = 'additional-content' //se non c'è, lo creo 
+            container = document.getElementById('additional-content');
+            container.innerHTML = ''; // se c'è già lo ripulisco
+        } else {
+            container = document.createElement('div');
+            container.id = 'additional-content'; // se non c'è, lo creo
         }
         const span = document.createElement('span');
-        const node = document.createTextNode('count: ' + this.userCount);
+        const node = document.createTextNode(`count: ${this.userCount}`);
         span.appendChild(node);
 
         container.appendChild(span);
 
         this.appendChild(container);
     }
-
 }
 
-
-window.customElements.define('super-header', SuperHeader, {extends: 'h1'}); //a differenza dell'elemento HTML generico devo sggiungere la parte di {extends: 'tag che estende'} (in questo caso h1)
+window.customElements.define('super-header', SuperHeader, { extends: 'h1' }); // a differenza dell'elemento HTML generico devo sggiungere la parte di {extends: 'tag che estende'} (in questo caso h1)
 
 /*
 
 per dire all'elemento nell'index (in questo caso H1 users) aggiungo la dicitura is = "nome del tag"
---> <h1 is="super-header"> Users </h1> 
+--> <h1 is="super-header"> Users </h1>
 
-this.attachShadow({mode: 'open'}) andrebbe nel costruttore ma in questo caso la shadow è evitabile perchè l'h1 non prende più le regole di default del browser 
+this.attachShadow({mode: 'open'}) andrebbe nel costruttore ma in questo caso la shadow è evitabile perchè l'h1 non prende più le regole di default del browser
 --> scompare dalla pagina finchè non gli do altre regole
 
 la creazione di un tag HTML generico (come pippo-tag) non permette di essere renderizzato su browser vecchi (si vede come uno span probabilmente vuoto)
